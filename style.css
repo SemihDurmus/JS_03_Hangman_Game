@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    color: #fff;
+
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 2rem;
+    background-image: url("./images/back.jpg");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title_area {
+    position: fixed;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.title_area h3{
+    font-family: 'Bangers', cursive;
+    font-size: 4rem;
+    letter-spacing: 0.5rem;
+    text-shadow: 0 0 7px #f5f6fa,           
+}
+
+.game_area {
+    /*background-color: rgb(15, 88, 88);*/
+    width: 70rem;
+    height: 50rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+.top_row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lives_area {
+    font-size: 2rem;
+}
+
+.wrong_letters_area {
+    background-color: #e55039;
+    border-radius: 1rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+.wrong_letters_area #wrong_letters{
+    font-family: 'Oswald', sans-serif;
+    font-size: 4rem;
+}
+
+.guess_area,
+.status_area {
+    width: 100%;
+    text-align: center;
+}
+
+#guess,
+#status {
+    font-family: 'Oswald', sans-serif;
+    font-size: 5rem;
+    letter-spacing: 0.5rem;
+}
+
+#guess {
+    letter-spacing: 2.3rem;
+}
