@@ -4,20 +4,20 @@ const livesElement = document.querySelector("#remaining_lives");
 const wrongLetterElement = document.querySelector("#wrong_letters");
 const guessAreaElement = document.querySelector("#guess");
 const statusAreaElement = document.querySelector("#status");
+const resetBtn = document.querySelector("#reset");
 
 //Creating a random word from the list
 const randomWord = words[Math.floor(Math.random() * words.length)];
 console.log(randomWord);
 
-//Setting lives to green and display on the page
+//Setting lives to 5 green balls and display on the page
 let lives = ["&#x1F7E2", "&#x1F7E2", "&#x1F7E2", "&#x1F7E2", "&#x1F7E2"];
 livesElement.innerHTML = lives.join("");
 
 //Variable for showing the worg letters
 wrong_array = [];
-wrongLetterElement.innerHTML = wrong_array.join(" ");
 
-//Creating an answer array of underscores and displaying on the page
+//Creating an answer array composed of underscores, and displaying the initial status on the page
 let answer_array = [];
 let wordLength = randomWord.length;
 
@@ -30,29 +30,41 @@ guessAreaElement.innerHTML = answer_array.join("");
 //Getting the value of a pressed key and sending to checkLetter function for processing
 // KeyCodes a->65 z->90  
 window.addEventListener("keydown", (e) => {
-        const letter = e.key;
-        if ((e.keyCode < 65) || (e.keyCode > 90) ) {
-            alert("Please enter a letter")
-        }
-        statusAreaElement.innerText = "";
-        checkLetter(letter)
+
+    const letter = e.key;
+    if ((e.keyCode < 65) || (e.keyCode > 90) ) {
+        alert("Please enter a letter");
     }
-);
+    
+    checkLetter(letter);
+});
+
+//Adding reset button a function to reset the page
+resetBtn.addEventListener("click", function() {
+    location.reload();
+})
+
 
 function checkLetter(x) {
-    
+
     if (lives.includes("&#x1F7E2") && answer_array.includes("_")) {
 
         if (answer_array.includes(x) || wrong_array.includes(x)) {
             alert("You entered '" + x + "' before.");
+
         } else if (randomWord.includes(x)) {
             for (let i=0; i<wordLength; i++) {
                 if (randomWord[i] == x) {
                     answer_array[i] = x;
                 }
             }
-
+            statusAreaElement.innerText = "Good job!";
             guessAreaElement.innerText = answer_array.join("");
+            
+            if (! answer_array.includes("_")) {
+                statusAreaElement.innerText = "You did it. Congrats!";
+                show_reset_button();
+            }
 
         } else {
             lives.push("&#x1F534");
@@ -60,12 +72,18 @@ function checkLetter(x) {
             livesElement.innerHTML = lives.join(" ");
             wrong_array.push(x);
             wrongLetterElement.innerHTML = wrong_array.join(" ");
-        }
-    } else if (! lives.includes("&#x1F7E2")) {
-        statusAreaElement.innerText = "Sorry, you could not complete the game. \nBetter luck next time"
-    }
+            statusAreaElement.innerText = "Hmm.. not a good try.";
 
+            if (! lives.includes("&#x1F7E2")) {
+                statusAreaElement.innerText = "Sorry, it was '" + randomWord +  "'\nBetter luck next time";
+                show_reset_button();
+            }
+        }
+    }
+        
 } 
 
+function show_reset_button() {
+    resetBtn.style.visibility = "visible";
+}
 
-//             console.log(x.toUpperCase());
