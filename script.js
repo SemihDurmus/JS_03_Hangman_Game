@@ -58,7 +58,7 @@ function checkLetter(x) {
                     answer_array[i] = x;
                 }
             }
-            statusAreaElement.innerText = "Good job!";
+            statusAreaElement.innerText = "Good choice!";
             guessAreaElement.innerText = answer_array.join("");
             
             if (! answer_array.includes("_")) {

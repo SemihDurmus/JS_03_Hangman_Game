@@ -25,9 +25,9 @@ body {
 
 .title_area {
     position: fixed;
-    top: 3rem;
-    left: 50%;
-    transform: translateX(-50%);
+    width:100%;
+    top: 4rem;
+    text-align: center;
 }
 .title_area h3{
     font-family: 'Bangers', cursive;
@@ -37,7 +37,6 @@ body {
 }
 
 .game_area {
-    /*background-color: rgb(15, 88, 88);*/
     width: 70rem;
     height: 40rem;
     display: flex;
@@ -100,3 +99,52 @@ body {
     color: aquamarine;
 }
 
+
+
+@media  screen and (max-width: 1000px) {
+    html {
+        font-size: 8px;
+    }
+}
+
+@media  screen and (max-width: 700px) {
+    html {
+        font-size: 6px;
+    }
+}
+
+@media  screen and (max-width: 500px) {
+    html {
+        font-size: 5px;
+    }
+
+    .top_row {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .lives_area {
+        margin-bottom: 2rem;
+    }
+}
+
+@media  screen and (max-width: 430px) {
+    html {
+        font-size: 5px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    .top_row {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .lives_area {
+        margin-bottom: 2rem;
+    }
+}
