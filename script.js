@@ -7,40 +7,33 @@ const statusAreaElement = document.querySelector("#status");
 const resetBtn = document.querySelector("#reset");
 const titleElement =  document.querySelector(".title_area");
 
+const inputElement = document.querySelector("#inp");
+
 //Creating a random word from the list
 const randomWord = words[Math.floor(Math.random() * words.length)];
 console.log(randomWord);
 
 //Setting lives to 5 green balls and display on the page
 let lives = ["&#9989", "&#9989", "&#9989", "&#9989", "&#9989"];
-livesElement.innerHTML = lives.join("");
+livesElement.innerHTML = lives.join(" ");
 
 //Variable for showing the worg letters
-wrong_array = [];
+const wrong_array = [];
 
 //Creating an answer array composed of underscores, and displaying the initial status on the page
-let answer_array = [];
+const answer_array = [];
 let wordLength = randomWord.length;
 
-for (i=0; i < wordLength; i++) {
+for (let i=0; i < wordLength; i++) {
     answer_array.push("_");
 };
 guessAreaElement.innerHTML = answer_array.join("");
 
-
-//Trying to show the keyboard.
-window.addEventListener("click", function() {
-    focus();
-});
-
-
-
-
 //Getting the value of a pressed key and sending to checkLetter function for processing
 // KeyCodes a->65 z->90  
 window.addEventListener("keydown", (e) => {
-
     const letter = e.key;
+
     if ((e.keyCode < 65) || (e.keyCode > 90) ) {
         alert("Please enter a letter");
     }
@@ -53,7 +46,6 @@ window.addEventListener("keydown", (e) => {
 resetBtn.addEventListener("click", function() {
     location.reload();
 })
-
 
 function checkLetter(x) {
 
@@ -77,12 +69,14 @@ function checkLetter(x) {
             }
 
         } else {
-            lives.push("&#10060");
-            lives.shift();
-            livesElement.innerHTML = lives.join(" ");
-            wrong_array.push(x);
-            wrongLetterElement.innerHTML = wrong_array.join(" ");
-            statusAreaElement.innerText = "Hmm.. not a good try.";
+            if (x >= "a" && x <= "z") {  
+                lives.push("&#10060");
+                lives.shift();
+                livesElement.innerHTML = lives.join(" ");
+                wrong_array.push(x);
+                wrongLetterElement.innerHTML = wrong_array.join(" ");
+                statusAreaElement.innerText = "Hmm.. not a good try.";
+            }
 
             if (! lives.includes("&#9989")) {
                 statusAreaElement.innerText = "Sorry, it was '" + randomWord +  "'\nBetter luck next time";
