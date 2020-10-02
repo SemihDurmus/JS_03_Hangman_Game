@@ -5,6 +5,7 @@ const wrongLetterElement = document.querySelector("#wrong_letters");
 const guessAreaElement = document.querySelector("#guess");
 const statusAreaElement = document.querySelector("#status");
 const resetBtn = document.querySelector("#reset");
+const titleElement =  document.querySelector(".title_area");
 
 //Creating a random word from the list
 const randomWord = words[Math.floor(Math.random() * words.length)];
@@ -36,6 +37,7 @@ window.addEventListener("keydown", (e) => {
         alert("Please enter a letter");
     }
     
+    titleElement.style.visibility = "hidden";
     checkLetter(letter);
 });
 
