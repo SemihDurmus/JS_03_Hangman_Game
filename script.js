@@ -11,7 +11,7 @@ const randomWord = words[Math.floor(Math.random() * words.length)];
 console.log(randomWord);
 
 //Setting lives to 5 green balls and display on the page
-let lives = ["&#x1F7E2", "&#x1F7E2", "&#x1F7E2", "&#x1F7E2", "&#x1F7E2"];
+let lives = ["&#9989", "&#9989", "&#9989", "&#9989", "&#9989"];
 livesElement.innerHTML = lives.join("");
 
 //Variable for showing the worg letters
@@ -47,7 +47,7 @@ resetBtn.addEventListener("click", function() {
 
 function checkLetter(x) {
 
-    if (lives.includes("&#x1F7E2") && answer_array.includes("_")) {
+    if (lives.includes("&#9989") && answer_array.includes("_")) {
 
         if (answer_array.includes(x) || wrong_array.includes(x)) {
             alert("You entered '" + x + "' before.");
@@ -67,14 +67,14 @@ function checkLetter(x) {
             }
 
         } else {
-            lives.push("&#x1F534");
+            lives.push("&#10060");
             lives.shift();
             livesElement.innerHTML = lives.join(" ");
             wrong_array.push(x);
             wrongLetterElement.innerHTML = wrong_array.join(" ");
             statusAreaElement.innerText = "Hmm.. not a good try.";
 
-            if (! lives.includes("&#x1F7E2")) {
+            if (! lives.includes("&#9989")) {
                 statusAreaElement.innerText = "Sorry, it was '" + randomWord +  "'\nBetter luck next time";
                 show_reset_button();
             }
