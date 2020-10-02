@@ -27,7 +27,14 @@ for (i=0; i < wordLength; i++) {
 };
 guessAreaElement.innerHTML = answer_array.join("");
 
-prompt();
+
+//Trying to show the keyboard.
+window.addEventListener("click", function() {
+    focus();
+});
+
+
+
 
 //Getting the value of a pressed key and sending to checkLetter function for processing
 // KeyCodes a->65 z->90  
