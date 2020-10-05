@@ -101,7 +101,10 @@ body {
     color: aquamarine;
 }
 
-
+.input_area {
+    position: absolute;
+    left: -200%;
+}
 
 @media  screen and (max-width: 1000px) {
     html {
