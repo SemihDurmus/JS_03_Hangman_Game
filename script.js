@@ -36,7 +36,7 @@ window.addEventListener("click", function() {
 
 //Getting the value of a pressed key and sending to checkLetter function for processing
 // KeyCodes a->65 z->90  
-window.addEventListener("keydown", (e) => {
+window.addEventListener("keyup", (e) => {
     const letter = e.key;
 
     if ((e.keyCode < 65) || (e.keyCode > 90) ) {
