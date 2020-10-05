@@ -29,6 +29,11 @@ for (let i=0; i < wordLength; i++) {
 };
 guessAreaElement.innerHTML = answer_array.join("");
 
+//Trying to show the keyboard.
+window.addEventListener("click", function() {
+    inputElement.focus();
+});
+
 //Getting the value of a pressed key and sending to checkLetter function for processing
 // KeyCodes a->65 z->90  
 window.addEventListener("keydown", (e) => {
